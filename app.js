@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+const viewRouter = require('./router/viewRouter');
+
 // const restaurantRoutes = require('./router/restaurant');
 
 // Init app
@@ -18,15 +20,11 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-// app.use(restaurantRoutes);
-
-app.get('/', (req, res) => {
-    res.render('layout');
-});
+app.use('/', viewRouter);
 
 // Error 404 page
 app.use('/', (req, res, next) => {
-    res.status(404).send('<h1>Page not found</h1>'); 
+    res.status(404).render('404', { pageTitle: 'Page Not Found', Preference: null, Name: null }); 
 });
 
 // Start server

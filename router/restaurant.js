@@ -1,6 +1,6 @@
 const express = require('express');
-const router = express.Router();
+const restaurantRouter = express.Router();
 
-router.post();
+restaurantRouter.post();
 
-module.exports = router;
+module.exports = restaurantRouter;
