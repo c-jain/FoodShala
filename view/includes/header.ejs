@@ -6,14 +6,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav navbar-right">
-                <% if (Preference) { %> 
+                <% if (Role === 'customer') { %> 
                     <li class="nav-item">
                         <a class="nav-link" href="/">Logout</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><%= Name %></a>
                     </li>
-                <% } else if (Name) { %>
+                <% } else if (Role == 'restaurant') { %>
                     <li class="nav-item">
                         <a class="nav-link" href="/addItem">AddItem</a>
                     </li>
@@ -28,10 +28,7 @@
                     </li>
                 <% } else { %>
                     <li class="nav-item">
-                        <a class="nav-link" href="/registerCustomer">Customer</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/registerRestaurant">Restaurant</a>
+                        <a class="nav-link" href="/login">Login</a>
                     </li>
                 <% } %>
             </ul>

@@ -1,0 +1,36 @@
+<%- include('./includes/head.ejs') %>
+</head>
+<body>
+    <%- include('./includes/header.ejs') %>
+    <div class="container">
+        <div class="row">
+            <div style="width: 30%; margin: 25px auto;">
+                <h1 style="text-align:center;">Login</h1>
+                <form action="/home" method="post">
+                    
+                    <div class="form-group">
+                        <input class="form-control" type="email" id="loginEmail" name="Email" placeholder="Email " required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input class="form-control" type="password" id="loginPassword" name="password" placeholder="Password " required>
+                    </div>
+
+                    <div class = "form-group">
+                        <select class="custom-select mr-sm-2" id="loginRole" required>
+                            <option selected>Login as a</option>
+                            <option value="1">customer</option>
+                            <option value="2">restaurant</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-primary btn-block">Login!</button>
+                    </div>
+
+                </form>
+                <div>Create account <a href="/register">Register</a></div>
+            </div>
+        </div>
+    </div>
+<%- include('./includes/footer.ejs') %>
