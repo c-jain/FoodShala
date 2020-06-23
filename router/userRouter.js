@@ -1,6 +1,6 @@
 const express = require('express');
 const restaurantRouter = express.Router();
 
-restaurantRouter.post();
+// restaurantRouter.post();
 
-module.exports = restaurantRouter;
+module.exports = userRouter;
