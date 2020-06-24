@@ -7,6 +7,7 @@ const session = require('express-session');
 const sequelize = require('./utility/DB');
 
 const viewRouter = require('./router/viewRouter');
+const userRouter = require('./router/userRouter');
 
 const User = require('./model/user');
 const FoodItem = require('./model/foodItem');
@@ -23,11 +24,12 @@ app.set('views', path.join(__dirname, 'view'));
 app.set('view engine', 'ejs');
 
 // Body Parser Middleware
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(session({ secret: 'my secret', resave: false, saveUninitialized: false }));
 
 // Routes
+app.use('/api/user', userRouter);
 app.use('/', viewRouter);
 
 // Error 404 page

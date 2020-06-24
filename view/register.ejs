@@ -6,14 +6,14 @@
         <div class="row">
             <div style="width: 30%; margin: 25px auto;">
                 <h1 style="text-align:center;">Register</h1>
-                <form action="/home" method="post">
+                <form action="/api/user/signup" method="post">
 
                     <div class="form-group">
-                        <input class="form-control" type="text" name="Name" id="signupName" placeholder="Name " required>
+                        <input class="form-control" type="text" name="name" id="signupName" placeholder="Name " required>
                     </div>
 
                     <div class="form-group">
-                        <input class="form-control" type="email" name="Email" id="signupEmail" placeholder="Email " required>
+                        <input class="form-control" type="email" name="email" id="signupEmail" placeholder="Email " required>
                     </div>
 
                     <div class="form-group">
@@ -21,18 +21,18 @@
                     </div>
 
                     <div class = "form-group">
-                        <select class="custom-select mr-sm-2" id="signupPreference" required>
-                            <option selected>Your preference</option>
-                            <option value="1">Veg</option>
-                            <option value="2">Non-Veg</option>
+                        <select class="custom-select mr-sm-2" id="signupPreference" name="preference" required>
+                            <option selected>Choose preference</option>
+                            <option value="veg">Veg</option>
+                            <option value="non-veg">Non-Veg</option>
                         </select>
                     </div>
 
                     <div class = "form-group">
-                        <select class="custom-select mr-sm-2" id="signupRole" required>
+                        <select class="custom-select mr-sm-2" id="signupRole" name="role" required>
                             <option selected>Register as a</option>
-                            <option value="1">customer</option>
-                            <option value="2">restaurant</option>
+                            <option value="customer">Customer</option>
+                            <option value="restaurant">Restaurant</option>
                         </select>
                     </div>
 

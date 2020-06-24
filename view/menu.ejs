@@ -2,8 +2,31 @@
 </head>
 
 <body>
-    <%- include('./includes/header.ejs') %>
-    <div>
-        <h1>List of food Items...</h1>
-    </div>
-    <%- include('./includes/footer.ejs') %>
+  <%- include('./includes/header.ejs') %>    
+  <br>    
+  <div class="row row-cols-1 row-cols-md-4">
+    <% Items.forEach(function(foodItem){ %>
+      <div class="container" >
+        <div class="col mb-2">
+          <div class="polaroid">
+            <div class="card bg-light">
+                <div class="card-body">
+                  <h5 class="card-title" style="font-family: sans-serif; font-weight: bold;"><%= foodItem.name %></h5>
+                  <p class="card-text" style="font-family: sans-serif; font-weight: bold;"> <%= foodItem.price %>/-</p>
+                  <p class="card-text" style="font-family: sans-serif; font-weight: bold;"> <%= foodItem.foodType.toUpperCase() %></p>
+                  <form action="/api/user/order/<%= foodItem.id %>" method="POST">
+                    <div class="form-group">
+                        <button class="btn float-right" style="background-color: #bbe3ff;">Order</button>
+                    </div>
+                  </form>
+                  <!-- <a class="btn float-right"  >Order</a> -->
+                  <!-- <% if(Role == "user"){ %> -->
+                  <!-- <% } %> -->
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+  <%- include('./includes/footer.ejs') %>

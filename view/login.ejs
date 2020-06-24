@@ -6,10 +6,10 @@
         <div class="row">
             <div style="width: 30%; margin: 25px auto;">
                 <h1 style="text-align:center;">Login</h1>
-                <form action="/home" method="post">
+                <form action="/api/user/login" method="post">
                     
                     <div class="form-group">
-                        <input class="form-control" type="email" id="loginEmail" name="Email" placeholder="Email " required>
+                        <input class="form-control" type="email" id="loginEmail" name="email" placeholder="Email " required>
                     </div>
                     
                     <div class="form-group">
@@ -17,10 +17,10 @@
                     </div>
 
                     <div class = "form-group">
-                        <select class="custom-select mr-sm-2" id="loginRole" required>
-                            <option selected>Login as a</option>
-                            <option value="1">customer</option>
-                            <option value="2">restaurant</option>
+                        <select class="custom-select mr-sm-2" id="loginRole" name="role" required>
+                            <option selected>Login As</option>
+                            <option value="customer">Customer</option>
+                            <option value="restaurant">Restaurant</option>
                         </select>
                     </div>
                     
