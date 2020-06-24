@@ -8,27 +8,27 @@
             <ul class="navbar-nav navbar-right">
                 <% if (Role === 'customer') { %> 
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Logout</a>
+                        <a class="nav-link" class="float-right" href="/">Logout</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><%= Name %></a>
+                        <a class="nav-link" class="float-right" href="#"><%= Name %></a>
                     </li>
                 <% } else if (Role == 'restaurant') { %>
                     <li class="nav-item">
-                        <a class="nav-link" href="/addItem">AddItem</a>
+                        <a class="nav-link" class="float-right" href="/addItem">AddItem</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/order">ViewOrders</a>
+                        <a class="nav-link" class="float-right" href="/order">ViewOrders</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Logout</a>
+                        <a class="nav-link" class="float-right" href="/">Logout</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><%= Name %></a>
+                        <a class="nav-link" class="float-right" href="#"><%= Name %></a>
                     </li>
                 <% } else { %>
                     <li class="nav-item">
-                        <a class="nav-link" href="/login">Login</a>
+                        <a class="nav-link" class="float-right" href="/login">Login</a>
                     </li>
                 <% } %>
             </ul>
