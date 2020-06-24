@@ -1,15 +1,50 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-        <a class="navbar-brand" href="/">FoodShala</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #f3f2fd;">
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav navbar-right">
+          <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-home"></span> FoodShala</a>
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <% if (Role === 'customer') { %> 
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Welcome <%= Name %></a>
+                </li>
+            <% } else if (Role === 'restaurant') { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/addItem">AddItem</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/order">ViewOrders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><%= Name %></a>
+                </li>
+            <% } %>
+          </ul>
+          <% if (Role === 'customer') { %>
+            <form class="form-inline my-2 my-lg-0" action="/" method="GET">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+            </form>
+          <% } else if (Role === 'restaurant') { %>
+            <form class="form-inline my-2 my-lg-0" action="/" method="GET">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+            </form>
+          <% } else { %>
+            <form class="form-inline my-2 my-lg-0" action="/login" method="GET" >
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign In</button>
+            </form>
+          <% } %>
+        </div>
+      </nav> -->
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #f3f2fd;">
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button> -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-home"></span> FoodShala</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <% if (Role === 'customer') { %> 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Logout</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><%= Name %></a>
                     </li>
@@ -21,17 +56,19 @@
                         <a class="nav-link" href="/order">ViewOrders</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Logout</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="#"><%= Name %></a>
-                    </li>
-                <% } else { %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Login</a>
                     </li>
                 <% } %>
             </ul>
+            <% if (Role) { %>                
+                <form class="form-inline my-2 my-lg-0" action="/api/user/logout" method="POST">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+                </form>
+            <% } else { %>
+                <form class="form-inline my-2 my-lg-0" action="/login" method="GET" >
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+                </form>
+            <% } %>
         </div>
     </nav>
 </header>

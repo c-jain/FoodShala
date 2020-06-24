@@ -9,11 +9,11 @@
                 <form class="addItem" action="/api/user/additem" method="POST">
 
                     <div class="form-group">
-                        <input class="form-control" type="text" name="name" id="addItemName" placeholder="Name eg. Pizza" required>
+                        <input class="form-control" type="text" name="name" id="addItemName" placeholder="Enter food item name" required>
                     </div>
 
                     <div class="form-group">
-                        <input class="form-control" type="number" name="price" id="addItemPrice" placeholder="Price " required>
+                        <input class="form-control" type="number" name="price" id="addItemPrice" placeholder="Price " min="1" max="1000" required>
                     </div>
 
                     <div class = "form-group">

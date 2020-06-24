@@ -2,7 +2,7 @@ const path = require('path');
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const session = require('express-session');
+const cookieParser = require('cookie-parser');
 
 const sequelize = require('./utility/DB');
 
@@ -16,6 +16,11 @@ const Orders = require('./model/orders');
 // Init app
 const app = express();
 
+// Body Parser Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(cookieParser());
+
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -23,18 +28,29 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'view'));
 app.set('view engine', 'ejs');
 
-// Body Parser Middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(session({ secret: 'my secret', resave: false, saveUninitialized: false }));
-
 // Routes
+app.use('/', (req, res, next) => {
+    if (!req.cookies.FSID) {
+        req.user = { isLoggedIn: false };
+        return next();
+    }
+
+    User.findByPk(req.cookies.FSID)
+    .then(user => {
+        req.user = user;
+        req.user.isLoggedIn = true;
+        next();
+    })
+    .catch(err => {
+        console.log(err);
+    });
+});
 app.use('/api/user', userRouter);
 app.use('/', viewRouter);
 
 // Error 404 page
 app.use('/', (req, res, next) => {
-    res.status(404).render('404', { pageTitle: 'Page Not Found', Role: null, Name: null }); 
+    res.status(404).render('404', { pageTitle: 'Page Not Found', Role: req.user.role, Name: req.user.name }); 
 });
 
 // setting association between models
@@ -47,7 +63,7 @@ FoodItem.belongsToMany(User, { through: Orders });
 sequelize
     .sync()
     .then(result =>{
-        console.log(result);
+        //console.log(result);
         // app.listen(5000); do it later
     })
     .catch(err => {

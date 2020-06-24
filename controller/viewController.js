@@ -1,29 +1,36 @@
-const items = [{name: 'pizza', customerName: 'Tom'},
-               {name: 'hot dog', customerName: 'jack'},
-               {name: 'pasta', customerName: 'Mike'}]
-
 const FoodItem = require('../model/foodItem');
 const Orders = require('../model/orders');
 
 exports.addItem = (req, res) => {
-    res.render('addItem', { pageTitle: 'Add Items', Role: 'restaurant', Name: 'Pizza Hut' });
+    res.render('addItem', {
+        pageTitle: 'Add Items',
+        Role: req.user.role,
+        Name: req.user.name });
 }
 
 exports.login = (req, res) => {
-    res.render('login', { pageTitle: 'Login', Role: null, Name: null });
-}
+    res.render('login', {
+        pageTitle: 'Login',
+        Role: req.user.role,
+        Name: req.user.name,
+    });
+};
 
-exports.register = (req, res) => {
-    res.render('register', { pageTitle: 'Register', Role: null, Name: null });
+exports.signup = (req, res) => {
+    res.render('signup', {
+        pageTitle: 'Signup',
+        Role: req.user.role,
+        Name: req.user.name
+    });
 }
 
 exports.order = (req, res) => {
-    Orders.findAll()
+    Orders.findAll({ where: { userId: req.user.id } })
     .then(items =>{
         res.render('order', {
             pageTitle: 'Orders',
-            Role: 'restaurant',
-            Name: 'Pizza Hut',
+            Role: req.user.role,
+            Name: req.user.name,
             Items: items
         });
     })
@@ -38,8 +45,8 @@ exports.menu = (req, res) => {
     .then(items => {
         res.render('menu', { 
             pageTitle: 'Menu',
-            Role: null,
-            Name: null,
+            Role: req.user.role,
+            Name: req.user.name,
             Items: items
         });
     })
