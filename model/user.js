@@ -21,7 +21,6 @@ const User = sequelize.define('user', {
     password: {
         type: Sequelize.STRING,
         allowNull: false,
-        validate: { min: 7 }
     },
     preference: {
         type: Sequelize.ENUM,
@@ -38,6 +37,3 @@ const User = sequelize.define('user', {
 }, { timestamps: false });
 
 module.exports = User;
-
-// to access enum
-// user.rawAttributes.states.values

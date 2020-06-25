@@ -1,32 +1,28 @@
 <%- include('./includes/head.ejs') %>
 </head>
-
 <body>
-  <%- include('./includes/header.ejs') %>    
-  <br>    
-  <div class="row row-cols-1 row-cols-md-4">
-    <% Items.forEach(function(foodItem){ %>
-      <div class="container" >
-        <div class="col mb-2">
-          <div class="polaroid">
-            <div class="card bg-light">
-                <div class="card-body">
-                  <h5 class="card-title" style="font-family: sans-serif; font-weight: bold;"><%= foodItem.name %></h5>
-                  <p class="card-text" style="font-family: sans-serif; font-weight: bold;"> <%= foodItem.price %>/-</p>
-                  <p class="card-text" style="font-family: sans-serif; font-weight: bold;"> <%= foodItem.foodType.toUpperCase() %></p>
-                  <% if(Role !== 'restaurant') { %>
-                  <form action="/api/user/order/<%= foodItem.id %>" method="POST">
-                    <div class="form-group">
-                        <button class="btn float-right" style="background-color: #bbe3ff;">Order</button>
-                    </div>
-                  </form>
-                  <% } %>
-                  <!-- <a class="btn float-right"  >Order</a> -->                  
+<%- include('./includes/header.ejs') %>    
+<br>    
+<div class="row row-cols-1 row-cols-md-4">
+  <% Items.forEach(function(foodItem){ %>
+    <div class="container" >
+      <div class="col mb-2">
+        <div class="polaroid">
+          <div class="card bg-light">
+              <div class="card-body">
+                <h5 class="card-title" style="font-family: sans-serif; font-weight: bold;"><%= foodItem.name %></h5>
+                <p class="card-text" style="font-family: sans-serif; font-weight: bold;"> <%= foodItem.price %>/-</p>
+                <p class="card-text" style="font-family: sans-serif; font-weight: bold;"> <%= foodItem.foodType.toUpperCase() %></p>
+                <% if(Role !== '  restaurant') { %>
+                <div class="order-button">
+                  <a class="btn btn-outline-secondary float-right payment" href="javascript:;" order-id="<%= foodItem.id %>">Order</a>
                 </div>
-            </div>
+                <% } %>                
+              </div>
           </div>
         </div>
       </div>
-    <% }); %>
-  </div>
-  <%- include('./includes/footer.ejs') %>
+    </div>
+  <% }); %>
+</div>
+<%- include('./includes/footer.ejs') %>

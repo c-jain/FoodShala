@@ -13,21 +13,17 @@ const Orders = sequelize.define('orders', {
     },
     foodItemId: {
         type: Sequelize.INTEGER,
-        references: {
-            model: FoodItem,
-            key: 'id'
-        },
         allowNull: false
     },
-    userId: {
+    restaurantId: {
         type: Sequelize.INTEGER,
-        references: {
-            model: User,
-            key: 'id'
-        },
         allowNull: false
     },
-    itemName: {
+    customerId: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    foodItemName: {
         type: Sequelize.STRING,
         allowNull: false
     },

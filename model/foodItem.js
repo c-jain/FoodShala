@@ -25,12 +25,8 @@ const FoodItem = sequelize.define('foodItem', {
         defaultValue: 100,
         allowNull: false
     },
-    userId: {
+    restaurantId: {
         type: Sequelize.INTEGER,
-        references: {
-            model: User,
-            key: 'id'
-        },
         allowNull: false
     }
 }, { timestamps: false });

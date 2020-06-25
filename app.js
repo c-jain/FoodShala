@@ -50,21 +50,18 @@ app.use('/', viewRouter);
 
 // Error 404 page
 app.use('/', (req, res, next) => {
-    res.status(404).render('404', { pageTitle: 'Page Not Found', Role: req.user.role, Name: req.user.name }); 
+    res.status(404).render('404', {
+        pageTitle: 'Page Not Found',
+        Role: req.user.role,
+        Name: req.user.name
+    }); 
 });
-
-// setting association between models
-User.hasMany(FoodItem);
-FoodItem.belongsTo(User);
-User.belongsToMany(FoodItem, { through: Orders });
-FoodItem.belongsToMany(User, { through: Orders });
 
 // Sync sequelize models with database tables
 sequelize
     .sync()
     .then(result =>{
-        //console.log(result);
-        // app.listen(5000); do it later
+        // app.listen(5000);
     })
     .catch(err => {
         console.log(err);
