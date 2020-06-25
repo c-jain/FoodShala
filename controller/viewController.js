@@ -42,7 +42,7 @@ exports.menu = async (req, res) => {
         pageTitle: 'Menu',
         Role: req.user.role,
         Name: req.user.name,
-        Items: foodItems
+        Items: foodItems,
     });
         
 };

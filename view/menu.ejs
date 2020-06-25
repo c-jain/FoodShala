@@ -13,6 +13,7 @@
                 <h5 class="card-title" style="font-family: sans-serif; font-weight: bold;"><%= foodItem.name %></h5>
                 <p class="card-text" style="font-family: sans-serif; font-weight: bold;"> <%= foodItem.price %>/-</p>
                 <p class="card-text" style="font-family: sans-serif; font-weight: bold;"> <%= foodItem.foodType.toUpperCase() %></p>
+                <p class="card-text" style="font-family: sans-serif; font-weight: bold;"> RestaurantId:  <%= foodItem.restaurantId %></p>
                 <% if(Role !== '  restaurant') { %>
                 <div class="order-button">
                   <a class="btn btn-outline-secondary float-right payment" href="javascript:;" order-id="<%= foodItem.id %>">Order</a>
