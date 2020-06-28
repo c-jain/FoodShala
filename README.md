@@ -12,6 +12,7 @@ Steps to run this app locally:
 2. Import the file "FoodShalaDB.sql" to replicate the database.
 3. Run the following command to install dependencies "sudo npm install" in the terminal.
 4. Run the following command to start the app "npm start" in the terminal.
+5. Open this link in the browser "http://localhost:5000/".
 
 NOTE: Inside the /utility/DB.js --> I provided ('FoodShalaDB','root','') as ('Database Name', 'User Name', 'Password') to create the database instance. Please config this accordingly if you face any issue related to this.
 
